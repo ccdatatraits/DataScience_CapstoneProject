@@ -1,0 +1,80 @@
+---
+title: "Data Science Capstone: Milestone Report Submission"
+author: "Sohail Munir Khan"
+date: "30 December 2015"
+output: html_document
+---
+
+This is a document that summarises the data downloaded for the Capstone project. Also it briefly lists the possible plans to create an application (Shiny app) in the future that will possibly be included in the final application / document.
+
+
+```{r}
+# Check that the zipfile exists or not
+zipfile <- "Coursera-SwiftKey.zip"
+# If zipfile doesn't exist, fetch the data from the URL
+if (!file.exists(zipfile)) {
+  sprintf("Fetching Data: %s", zipfile)
+  zipfile_url <- paste("https://d396qusza40orc.cloudfront.net/", 
+                       "dsscapstone/dataset/Coursera-SwiftKey.zip", sep = "")
+  download.file(zipfile_url, zipfile, method = "curl")
+  dateDownloaded <- date()
+  dateDownloaded
+} else sprintf("Data: %s already exist", zipfile)
+
+# Check that zip file has been unzipped by looking for en_US.blogs.txt
+blogsEN_US <- "final/en_US/en_US.blogs.txt"
+newsEN_US <- "final/en_US/en_US.news.txt"
+twitterEN_US <- "final/en_US/en_US.twitter.txt"
+# If file doesn't exist, then unzip data
+if (!file.exists(blogsEN_US)) {
+  print("Unzipping Data")
+  unzip(zipfile)
+} else sprintf("Data: %s already unzipped", blogsEN_US)
+## Read unzipped data into R objects
+file_blogsEN_US <- file(blogsEN_US, "r")
+lBlogsEN_US <- readLines(file_blogsEN_US, skipNul = TRUE)
+close(file_blogsEN_US)
+
+summary(lBlogsEN_US)
+
+file_newsEN_US <- file(newsEN_US, "r")
+lNewsEN_US <- readLines(file_newsEN_US, skipNul = TRUE)
+close(file_newsEN_US)
+
+summary(lNewsEN_US)
+
+file_twitterEN_US <- file(twitterEN_US, "r")
+lTwitterEN_US <- readLines(file_twitterEN_US, skipNul = TRUE)
+close(file_twitterEN_US)
+
+summary(lTwitterEN_US)
+
+```
+
+As you can from above, there are 899288, 1010242, 2360148 lines respectively in blogs, news and twitter English files.
+
+```{r}
+library(stringr)
+cBlogsEN_US <- gsub("\\s+", " ", str_trim(str_to_lower(lBlogsEN_US)))
+wBlogsEN_US <- sum(sapply(gregexpr("\\S+", cBlogsEN_US), length))
+wBlogsEN_US
+
+cNewsEN_US <- gsub("\\s+", " ", str_trim(str_to_lower(lNewsEN_US)))
+wNewsEN_US <- sum(sapply(gregexpr("\\S+", cNewsEN_US), length))
+wNewsEN_US
+
+cTwitterEN_US <- gsub("\\s+", " ", str_trim(str_to_lower(lTwitterEN_US)))
+wTwitterEN_US <- sum(sapply(gregexpr("\\S+", cTwitterEN_US), length))
+wTwitterEN_US
+```
+
+As you can from above, there are 37334129, 34372529, 30373603 words respectively in blogs, news and twitter English files.
+
+Possible Future Requirements
+
+* Predict next word (n-gram: last 1-2-3 words - sometimes new words come)
+* Predict next 2 words
+* Predict one word on a new line
+* Predict appropriate in answer to a question
+* Predict alternatives
+* Predict / change prediction when user presses prefix?

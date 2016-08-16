@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/139434/34964abacc3e402d86a76ba8a5d926fc
+url: http://rpubs.com/ccdatatraits/139434
+when: 1451435155.34985

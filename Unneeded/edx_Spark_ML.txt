@@ -1,0 +1,241 @@
+Web Server Log Analysis with Apache Spark
+-----------------------------------------
+Part 1: Apache Web Server Log file format
+	(1a) Parsing Each Log Line
+	(1b) Configuration and Initial RDD Creation
+	(1c) Data Cleaning
+Part 2: Sample Analyses on the Web Server Log File
+	(2a) Example: Content Size Statistics
+	(2b) Example: Response Code Analysis
+	(2c) Example: Response Code Graphing with matplotlib
+	(2d) Example: Frequent Hosts
+	(2e) Example: Visualizing Endpoints
+	(2f) Example: Top Endpoints
+Part 3: Analyzing Web Server Log File
+	(3a) Exercise: Top Ten Error Endpoints
+	(3b) Exercise: Number of Unique Hosts
+	(3c) Exercise: Number of Unique Daily Hosts
+	(3d) Exercise: Visualizing the Number of Unique Daily Hosts
+	(3e) Exercise: Average Number of Daily Requests per Hosts
+	(3f) Exercise: Visualizing the Average Daily Requests per Unique Host
+Part 4: Exploring 404 Response Codes
+	(4a) Exercise: Counting 404 Response Codes
+	(4b) Exercise: Listing 404 Response Code Records
+	(4c) Exercise: Listing the Top Twenty 404 Response Code Endpoints
+	(4d) Exercise: Listing the Top Twenty-five 404 Response Code Hosts
+	(4e) Exercise: Listing 404 Response Codes per Day
+	(4f) Exercise: Visualizing the 404 Response Codes by Day
+	(4g) Exercise: Top Five Days for 404 Response Codes
+	(4h) Exercise: Hourly 404 Response Codes
+	(4i) Exercise: Visualizing the 404 Response Codes by Hour
+
+Text Analysis and Entity Resolution
+-----------------------------------
+Part 0: Preliminaries
+Part 1: ER as Text Similarity - Bags of Words
+	(1a) Tokenize a String
+	(1b) Removing stopwords
+	(1c) Tokenizing the small datasets
+	(1d) Amazon record with the most tokens
+Part 2: ER as Text Similarity - Weighted Bag-of-Words using TF-IDF
+	(2a) Implement a TF function
+	(2b) Create a corpus
+	(2c) Implement an IDFs function
+	(2d) Tokens with the smallest IDF
+	(2e) IDF Histogram
+	(2f) Implement a TF-IDF function
+Part 3: ER as Text Similarity - Cosine Similarity
+	(3a) Implement the components of a cosineSimilarity function
+	(3b) Implement a cosineSimilarity function
+	(3c) Perform Entity Resolution
+	(3d) Perform Entity Resolution with Broadcast Variables
+	(3e) Perform a Gold Standard evaluation
+Part 4: Scalable ER
+	(4a) Tokenize the full dataset
+	(4b) Compute IDFs and TF-IDFs for the full datasets
+	(4c) Compute Norms for the weights from the full datasets
+	(4d) Create inverted indicies from the full datasets
+	(4e) Identify common tokens from the full dataset
+	(4f) Identify common tokens from the full dataset
+Part 5: Analysis
+	(5a) Counting True Positives, False Positives, and False Negatives
+	(5b) Precision, Recall, and F-measures
+	(5c) Line Plots
+
+Introduction to Machine Learning with Apache Spark
+--------------------------------------------------
+Part 0: Preliminaries
+Part 1: Basic Recommendations
+	(1a) Number of Ratings and Average Ratings for a Movie
+	(1b) Movies with Highest Average Ratings
+	(1c) Movies with Highest Average Ratings and more than 500 reviews
+Part 2: Collaborative Filtering
+	(2a) Creating a Training Set
+	(2b) Root Mean Square Error (RMSE)
+	(2c) Using ALS.train()
+	(2d) Testing Your Model
+	(2e) Comparing Your Model
+Part 3: Predictions for Yourself
+	(3a) Your Movie Ratings
+	(3b) Add Your Movies to Training Dataset
+	(3c) Train a Model with Your Ratings
+	(3d) Check RMSE for the New Model with Your Ratings
+	(3e) Predict Your Ratings
+	(3f) Predict Your Ratings
+
+Math and Python review and CTR data download
+--------------------------------------------
+Part 1: Math review
+	(1a) Scalar multiplication: vectors
+	(1b) Element-wise multiplication: vectors
+	(1c) Dot product
+	(1d) Matrix multiplication
+Part 2: NumPy
+	(2a) Scalar multiplication
+	(2b) Element-wise multiplication and dot product
+	(2c) Matrix math
+Part 3: Additional NumPy and Spark linear algebra
+	(3a) Slices
+	(3b) Combining ndarray objects
+	(3c) PySpark's DenseVector
+Part 4: Python lambda expressions
+	(4a) Lambda is an anonymous function
+	(4b) lambda fewer steps than def
+	(4c) Lambda expression arguments
+	(4d) Restrictions on lambda expressions
+	(4e) Functional programming
+	(4f) Composability
+Part 5: CTR data download
+
+Word Count Lab: Building a word count application
+-------------------------------------------------
+Part 1: Creating a base RDD and pair RDDs
+	(1a) Create a base RDD
+	(1b) Pluralize and test
+	(1c) Apply makePlural to the base RDD
+	(1d) Pass a lambda function to map
+	(1e) Length of each word
+	(1f) Pair RDDs
+Part 2: Counting with pair RDDs
+	(2a) groupByKey() approach
+	(2b) Use groupByKey() to obtain the counts
+	(2c) Counting using reduceByKey
+	(2d) All together
+Part 3: Finding unique words and a mean value
+	(3a) Unique words
+	(3b) Mean using reduce
+Part 4: Apply word count to a file
+	(4a) wordCount function
+	(4b) Capitalization and punctuation
+	(4c) Load a text file
+	(4d) Words from lines
+	(4e) Remove empty elements
+	(4f) Count the words
+
+Linear Regression Lab
+---------------------
+####Part 1: Read and parse the initial dataset
+	(1a) Load and check the data
+	(1b) Using LabeledPoint
+#### Visualization 1: Features
+	(1c) Find the range
+	(1d) Shift labels
+#### Visualization 2: Shifting labels
+	(1e) Training, validation, and test sets
+####Part 2: Create and evaluate a baseline model
+	(2a) Average label
+	(2b) Root mean squared error
+	(2c) Training, validation and test RMSE
+#### Visualization 3: Predicted vs. actual
+####Part 3: Train (via gradient descent) and evaluate a linear regression model
+	(3a) Gradient summand
+	(3b) Use weights to make predictions
+	(3c) Gradient descent
+	(3d) Train the model
+#### Visualization 4: Training error
+####Part 4: Train using MLlib and tune hyperparameters via grid search
+	(4a) LinearRegressionWithSGD
+	(4b) Predict
+	(4c) Evaluate RMSE
+	(4d) Grid search
+#### Visualization 5: Best model's predictions
+	(4e) Vary alpha and the number of iterations
+#### Visualization 6: Hyperparameter heat map
+####Part 5: Add interactions between features
+	(5a) Add 2-way interactions
+	(5b) Build interaction model
+	(5c) Evaluate interaction model on test data
+
+Click-Through Rate Prediction Lab
+---------------------------------
+####Part 1: Featurize categorical data using one-hot-encoding (OHE)
+	(1a) One-hot-encoding
+	(1b) Sparse vectors
+	(1c) OHE features as sparse vectors
+	(1d) Define a OHE function
+	(1e) Apply OHE to a dataset
+####Part 2: Construct an OHE dictionary
+	(2a) Pair RDD of (featureID, category)
+	(2b) OHE Dictionary from distinct features
+	(2c) Automated creation of an OHE dictionary
+####Part 3: Parse CTR data and generate OHE features
+	(3a) Loading and splitting the data
+	(3b) Extract features
+	(3c) Create an OHE dictionary from the dataset
+	(3d) Apply OHE to the dataset
+#### Visualization 1: Feature frequency
+	(3e) Handling unseen features
+####Part 4: CTR prediction and logloss evaluation
+	(4a) Logistic regression
+	(4b) Log loss
+	(4c) Baseline log loss
+	(4d) Predicted probability
+	(4e) Evaluate the model
+	(4f) Validation log loss
+#### Visualization 2: ROC curve
+####Part 5: Reduce feature dimension via feature hashing
+	(5a) Hash function
+	(5b) Creating hashed features
+	(5c) Sparsity
+	(5d) Logistic model with hashed features
+#### Visualization 3: Hyperparameter heat map
+	(5e) Evaluate on the test set
+
+Principal Component Analysis Lab
+--------------------------------
+####Part 1: Work through the steps of PCA on a sample dataset
+####Visualization 1: Two-dimensional Gaussians
+	(1a) Interpreting PCA
+	(1b) Sample covariance matrix
+	(1c) Covariance Function
+	(1d) Eigendecomposition
+	(1e) PCA scores
+####Part 2: Write a PCA function and evaluate PCA on sample datasets
+	(2a) PCA function
+	(2b) PCA on dataRandom
+####Visualization 2: PCA projection
+####Visualization 3: Three-dimensional data
+	(2c) 3D to 2D
+####Visualization 4: 2D representation of 3D data
+	(2d) Variance explained
+####Part 3: Parse, inspect, and preprocess neuroscience data then perform PCA
+	(3a) Load neuroscience data
+	(3b) Parse the data
+	(3c) Min and max flouresence
+####Visualization 5: Pixel intensity
+	(3d) Fractional signal change
+####Visualization 6: Normalized data
+	(3e) PCA on the scaled data
+####Visualization 7: Top two components as images
+####Visualization 8: Top two components as one image
+####Part 4: Perform feature-based aggregation followed by PCA
+	(4a) Aggregation using arrays
+	(4b) Recreate with np.tile and np.eye
+	(4c) Recreate with np.kron
+	(4d) Aggregate by time
+	(4e) Obtain a compact representation
+####Visualization 9: Top two components by time
+	(4f) Aggregate by direction
+	(4g) Compact representation of direction data
+####Visualization 10: Top two components by direction
+	(4h) Next steps
